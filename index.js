@@ -42,3 +42,13 @@ const questions = [
     },
 ];
 
+function writeToFile(fileName, data) {
+    console.log("writing [" + data + "] to file [" + fileName + "]")
+    fileSystem.writefile(fileName, data, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("logo.svg generated!");
+    });
+}
+
