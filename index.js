@@ -1,4 +1,3 @@
-const fileSystem = require('./node_modules/graceful-fs/graceful-fs')
 const inquirer = require("inquirer");
 const {Circle, Square, Triangle} = require("./lib/shapes");
 
@@ -21,7 +20,7 @@ class Svg{
 const questions = [
     {
         type: "input",
-        name: "logo-name",
+        name: "logoName",
         message: "Enter your logo name",
     },
     {
@@ -57,10 +56,10 @@ async function init () {
     var svgString = "";
     var svg_file = "logo.svg";
 
-    const answers = await inquirer.prompt(questions);
+    const answers = await (questions);
 
     var user_text = "";
-    if (answers.text.length > 0 && answers.text.length <4) {
+    if (questions.length > 0 && questions.length <4) {
         user_text = answers.text;
     } else {
         console.log("Please only enter 1-3 characters")
