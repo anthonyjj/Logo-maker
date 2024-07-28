@@ -2,7 +2,7 @@ const fs = require('./node_modules/graceful-fs/graceful-fs')
 const inquirer = require("inquirer");
 const {Circle, Square, Triangle} = require("./lib/shapes");
 
-class svg{
+class Svg{
     constructor(){
         this.textElement = ''
         this.shapeEl = ''
@@ -94,4 +94,15 @@ async function init () {
     }
     user_shape.setcolor(user_shape_color);
 
+    var svg = new Svg();
+    svg.setTextElement(user_text, user_font_color);
+    svg.setShapeElement(user_shape);
+    svgString = svg.render();
+
+    console.log("Displaying shape: \n\n" + svgString);
+
+    console.log("shape generation complete!");
+    console.log("Writing shape to file...");
+    writeToFile(svg_file, svgString);
 }
+init()
