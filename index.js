@@ -52,3 +52,46 @@ function writeToFile(fileName, data) {
     });
 }
 
+async function init () {
+    console.log("starting writing");
+    var svgString = "";
+    var svg_file = "logo.svg";
+
+    const answers = await inquirer.prompt(questions);
+
+    var user_text = "";
+    if (answers.text.length > 0 && answers.text.length <4) {
+        user_text = answers.text;
+    } else {
+        console.log("Please only enter 1-3 characters")
+        return;
+    }
+    console.log("User text: [" + user_text + "]");
+
+    user_font_color = answers["text-color"];
+    console.log("User font color: [" + user_font_color + "]");
+
+    user_shape_color = answers.shape;
+    console.log("User shape color: [" + user_shape_color + "]");
+
+    user_shape_type = answers["shape"];
+    console.log("User's shape = [" + user_shape_type + "]");
+
+    let user_shape;
+    if (user_shape_type === "Square" || user_shape_type === "square") {
+        user_shape = new Square();
+        console.log("User selected Square shape");
+    }
+    else if (user_shape_type === "Circle" || user_shape_type === "circle") {
+        user_shape = new Circle();
+        console.log("User selected Circle shape");
+    }
+    else if (user_shape_type === "Triangle" || user_shape_type === "triangle") {
+        user_shape = new Triangle();
+        console.log("User selected triangle shape");
+    } else {
+        console.log("Invalid shape!");
+    }
+    user_shape.setcolor(user_shape_color);
+
+}
