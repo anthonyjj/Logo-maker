@@ -1,4 +1,4 @@
-const fs = require('./node_modules/graceful-fs/graceful-fs')
+const fileSystem = require('./node_modules/graceful-fs/graceful-fs')
 const inquirer = require("inquirer");
 const {Circle, Square, Triangle} = require("./lib/shapes");
 
